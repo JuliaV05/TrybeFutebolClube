@@ -1,4 +1,4 @@
-export default interface IExample {
+export default interface Teams {
   id: number,
   teamName: string,
 }
