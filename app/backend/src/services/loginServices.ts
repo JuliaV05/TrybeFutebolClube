@@ -1,8 +1,22 @@
-// import Users from "src/database/models/users";
+import bcrypt = require('bcryptjs');
+import { generateToken } from '../utils/jwt';
+import Users from '../database/models/users';
 
-// export default class loginServices {
-//     public static async postLogin(req: Request, res: Response) {
-//       const login = await Users.;
-//       res.status(200).json(login);
-//     }
-//   }
+interface UserToken {
+  token: string,
+}
+
+export default class loginServices {
+  public static async postLogin(email: string, password: string): Promise<UserToken> {
+    const login = await Users.findOne({ where: { email } });
+    if (!login) {
+      throw new Error('Invalid email or password');
+    }
+    const decodePassword = await bcrypt.compare(password, login.dataValues.password);
+    if (!decodePassword) {
+      throw new Error('Unauthorized user');
+    }
+    const token = generateToken(email, login.role);
+    return { token };
+  }
+}
