@@ -1,5 +1,8 @@
+import express = require('express');
 import teamsRouter from './teamsRouter';
 
-teamsRouter.get('/teams');
+const router = express.Router();
 
-export default teamsRouter;
+router.use('/teams', teamsRouter);
+
+export default router;

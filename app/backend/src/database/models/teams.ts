@@ -9,7 +9,7 @@ import db from '.';
 class Teams extends Model<InferAttributes<Teams>,
 InferCreationAttributes<Teams>> {
   declare id: number;
-  declare teamName: number;
+  declare teamName: string;
 }
 
 Teams.init({
