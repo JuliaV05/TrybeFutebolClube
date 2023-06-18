@@ -9,7 +9,7 @@ const loginValidate = async (req: Request, res: Response, next: NextFunction) =>
     return res.status(400).json({ message: 'All fields must be filled' });
   }
   if (!emailRegex.test(email) || password.length < numberPassword) {
-    return res.status(400).json({ message: 'All fields must be filled' });
+    return res.status(401).json({ message: 'Invalid email or password' });
   }
   next();
 };
