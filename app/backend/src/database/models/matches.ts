@@ -41,7 +41,7 @@ Matches.init({
       key: 'id',
     },
   },
-  awayTeamgoals: {
+  awayTeamGoals: {
     type: DataTypes.INTEGER,
     allowNull: true,
     field: 'away_team_goals',

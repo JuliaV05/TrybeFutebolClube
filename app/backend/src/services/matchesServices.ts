@@ -16,7 +16,9 @@ export default class matchesServices {
         attributes: ['teamName'],
         required: true,
       },
-    ] });
+    ],
+    order: [['id', 'ASC']],
+    });
     return matches;
   }
 }
