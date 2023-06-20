@@ -1,3 +1,4 @@
+import Goals from '../Interfaces/Goals';
 import Matches from '../database/models/matches';
 import Teams from '../database/models/teams';
 
@@ -22,8 +23,16 @@ export default class matchesServices {
     return matches;
   }
 
-  public static async getByIdMatches(id: string) {
+  public static async getByIdMatches(id: number) {
     await Matches.update({ inProgress: false }, { where: { id } });
     return 'Finished';
+  }
+
+  public static async updateMatches(id: number, goals: Goals) {
+    const matches = await Matches.update(
+      { homeTeamGoals: goals.homeTeamGoals, awayTeamGoals: goals.awayTeamGoals },
+      { where: { id } },
+    );
+    return matches;
   }
 }

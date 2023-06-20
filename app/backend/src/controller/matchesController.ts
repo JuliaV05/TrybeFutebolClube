@@ -15,7 +15,14 @@ export default class matchesController {
 
   public static async getByIdMatches(req: Request, res: Response) {
     const { id } = req.params;
-    const matches = await matchesServices.getByIdMatches(id);
+    const matches = await matchesServices.getByIdMatches(+id);
+    res.status(200).json(matches);
+  }
+
+  public static async updateMatches(req: Request, res: Response) {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+    const matches = await matchesServices.updateMatches(+id, { homeTeamGoals, awayTeamGoals });
     res.status(200).json(matches);
   }
 }

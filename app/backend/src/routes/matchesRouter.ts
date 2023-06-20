@@ -10,5 +10,6 @@ matchesRouter.patch(
   tokenValidate,
   (req, res) => matchesController.getByIdMatches(req, res),
 );
+matchesRouter.patch('/:id', tokenValidate, (req, res) => matchesController.updateMatches(req, res));
 
 export default matchesRouter;
