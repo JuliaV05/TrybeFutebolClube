@@ -1,3 +1,4 @@
+import MatchesAttributes from '../Interfaces/MatchesAttributes';
 import Goals from '../Interfaces/Goals';
 import Matches from '../database/models/matches';
 import Teams from '../database/models/teams';
@@ -33,6 +34,14 @@ export default class matchesServices {
       { homeTeamGoals: goals.homeTeamGoals, awayTeamGoals: goals.awayTeamGoals },
       { where: { id } },
     );
+    return matches;
+  }
+
+  public static async createMatches(match: MatchesAttributes) {
+    const matches = await Matches.create({
+      ...match,
+      inProgress: true,
+    });
     return matches;
   }
 }

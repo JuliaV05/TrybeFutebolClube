@@ -25,4 +25,14 @@ export default class matchesController {
     const matches = await matchesServices.updateMatches(+id, { homeTeamGoals, awayTeamGoals });
     res.status(200).json(matches);
   }
+
+  public static async createMatches(req: Request, res: Response) {
+    try {
+      const matches = await matchesServices.createMatches(req.body);
+      res.status(201).json(matches);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: error });
+    }
+  }
 }
