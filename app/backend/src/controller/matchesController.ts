@@ -12,4 +12,10 @@ export default class matchesController {
     }
     res.status(200).json(matches);
   }
+
+  public static async getByIdMatches(req: Request, res: Response) {
+    const { id } = req.params;
+    const matches = await matchesServices.getByIdMatches(id);
+    res.status(200).json(matches);
+  }
 }

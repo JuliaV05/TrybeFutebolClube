@@ -21,4 +21,9 @@ export default class matchesServices {
     });
     return matches;
   }
+
+  public static async getByIdMatches(id: string) {
+    await Matches.update({ inProgress: false }, { where: { id } });
+    return 'Finished';
+  }
 }
