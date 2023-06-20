@@ -44,4 +44,42 @@ export default class matchesServices {
     });
     return matches;
   }
+
+  public static async findAllTeamsHome(id: number | string) {
+    const teamsHome = await Matches.findAll({
+      where: { homeTeamId: id, inProgress: false },
+      include: [
+        {
+          model: Teams,
+          as: 'homeTeam',
+          attributes: { exclude: ['id'] },
+        },
+        {
+          model: Teams,
+          as: 'awayTeam',
+          attributes: { exclude: ['id'] },
+        },
+      ],
+    });
+    return teamsHome;
+  }
+
+  public static async findAllTeamsAway(id: number | string) {
+    const teamsAway = await Matches.findAll({
+      where: { awayTeamId: id, inProgress: false },
+      include: [
+        {
+          model: Teams,
+          as: 'homeTeam',
+          attributes: { exclude: ['id'] },
+        },
+        {
+          model: Teams,
+          as: 'awayTeam',
+          attributes: { exclude: ['id'] },
+        },
+      ],
+    });
+    return teamsAway;
+  }
 }
