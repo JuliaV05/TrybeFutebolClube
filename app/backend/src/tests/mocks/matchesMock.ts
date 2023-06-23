@@ -1,4 +1,4 @@
-export const matchesMock = [
+ const matchesMock = [
     {
     "id": 1,
     "homeTeamId": 16,
@@ -34,7 +34,7 @@ export const matchesMock = [
 
 
 
-    export const mockInProgress = 
+    const inProgressTrue = 
         [
             {
               "id": 41,
@@ -79,4 +79,36 @@ export const matchesMock = [
               }
             },
     ] 
-    // export { matchesMock, mockInProgress };
+
+    const inProgressFalse = [
+      {
+        "id": 1,
+        "homeTeamId": 16,
+        "homeTeamGoals": 1,
+        "awayTeamId": 8,
+        "awayTeamGoals": 1,
+        "inProgress": false,
+        "homeTeam": {
+          "teamName": "São Paulo"
+        },
+        "awayTeam": {
+          "teamName": "Grêmio"
+        }
+      },
+      {
+        "id": 2,
+        "homeTeamId": 9,
+        "homeTeamGoals": 1,
+        "awayTeamId": 14,
+        "awayTeamGoals": 1,
+        "inProgress": false,
+        "homeTeam": {
+          "teamName": "Internacional"
+        },
+        "awayTeam": {
+          "teamName": "Santos"
+        }
+      },
+    ]
+
+    export { matchesMock, inProgressTrue, inProgressFalse };
