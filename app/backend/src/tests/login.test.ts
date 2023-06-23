@@ -11,7 +11,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 
-describe.only('Testes do fluxo 2...', () => {
+describe('Testes do fluxo 2...', () => {
   afterEach(sinon.restore)
   
     // it('testa endpoint post Users', async () => {
