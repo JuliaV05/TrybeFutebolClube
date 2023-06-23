@@ -5,51 +5,18 @@ import chaiHttp = require('chai-http');
 import { app } from '../app';
 
 import MatchesModel from '../database/models/matches';
+import { matchesMock, mockInProgress } from './mocks/matchesMock';
 
 
 chai.use(chaiHttp);
 const { expect } = chai;
 
-const matchesMock = [
-{
-"id": 1,
-"homeTeamId": 16,
-"homeTeamGoals": 1,
-"awayTeamId": 8,
-"awayTeamGoals": 1,
-"inProgress": false,
-"homeTeam": {
-"teamName": "São Paulo"
-},
-"awayTeam": {
-"teamName": "Grêmio"
-}
-},
-{
-"id": 2,
-"homeTeamId": 16,
-"homeTeamGoals": 2,
-"awayTeamId": 9,
-"awayTeamGoals": 0,
-"inProgress": true,
-"homeTeam": {
-"teamName": "São Paulo"
-},
-"awayTeam": {
-"teamName": "Internacional"
-}
-},
-{
-"message": "Finished"
-},
-];
-
-describe('Test the Match flux', () => {
+describe('Testes do fluxo 3', () => {
 afterEach(() => {
 sinon.restore();
 });
 
-it('Test if /matches route returns all matches', async () => {
+it('testa se o endpoint get retorna todas as partidas', async () => {
 sinon.stub(MatchesModel, 'findAll').resolves(matchesMock as unknown as MatchesModel[]);
 
 const response = await chai.request(app).get('/matches');
@@ -58,12 +25,12 @@ expect(response.status).to.be.equal(200);
 expect(response.body).to.be.deep.equal(matchesMock);
 });
 
-it('Test if /matches?inProgress=true route returns all matches in progress', async () => {
-sinon.stub(MatchesModel, 'findAll').resolves(matchesMock as unknown as MatchesModel[]);
+it('testa se a rota /matches?inProgress=true retorna todas as partidas em andamento', async () => {
+sinon.stub(MatchesModel, 'findAll').resolves(mockInProgress as unknown as MatchesModel[]);
 
 const response = await chai.request(app).get('/matches?inProgress=true');
 
 expect(response.status).to.be.equal(200);
-expect(response.body).to.be.equal(matchesMock);
+expect(response.body).to.be.deep.equal(mockInProgress);
 });
 });
