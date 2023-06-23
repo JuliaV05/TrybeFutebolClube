@@ -34,7 +34,7 @@ export const matchesMock = [
 
 
 
-    export const mockInProgress = [
+    export const mockInProgress = 
         [
             {
               "id": 41,
@@ -78,5 +78,5 @@ export const matchesMock = [
                 "teamName": "Minas Brasília"
               }
             },
-    ] ]
+    ] 
     // export { matchesMock, mockInProgress };

@@ -33,4 +33,5 @@ const response = await chai.request(app).get('/matches?inProgress=true');
 expect(response.status).to.be.equal(200);
 expect(response.body).to.be.deep.equal(mockInProgress);
 });
+
 });
