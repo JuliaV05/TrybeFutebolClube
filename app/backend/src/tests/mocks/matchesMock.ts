@@ -111,4 +111,10 @@
       },
     ]
 
-    export { matchesMock, inProgressTrue, inProgressFalse };
+    const matchesPatch: { homeTeamGoals: number, awayTeamGoals: number } = {
+      homeTeamGoals: 3,
+      awayTeamGoals: 1
+    };
+    
+
+    export { matchesMock, inProgressTrue, inProgressFalse, matchesPatch };

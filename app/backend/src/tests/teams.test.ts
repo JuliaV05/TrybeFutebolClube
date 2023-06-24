@@ -40,4 +40,19 @@ const registrosMockadosCertinho = Teams.build(teamById);
       expect(response.status).to.be.equal(200);
       expect(response.body).to.be.deep.equal(teamById);
    });
+
+// it('A rota /teams retorna os times corretamente', async () => {
+//    sinon.stub(Teams, 'findAll').resolves(teamsMock as Teams[]);
+//    let chaiHttpResponse: Response;
+//    chaiHttpResponse = await chai.request(app).get('/teams');
+//    expect(chaiHttpResponse.status).to.be.equal(200);
+//    expect(chaiHttpResponse.body).to.be.deep.equal(teamsMock);
+//  });
+//  it('A rota /teams:id retorna o time especifico', async () => {
+//    sinon.stub(Teams, 'findByPk').resolves(teamById as Teams);
+//    let chaiHttpResponse: Response;
+//    chaiHttpResponse = await chai.request(app).get('/teams/8');
+//    expect(chaiHttpResponse.status).to.be.equal(200);
+//    expect(chaiHttpResponse.body).to.be.deep.equal(teamById);
+//  });
 });
