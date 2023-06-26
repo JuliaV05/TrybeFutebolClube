@@ -15,7 +15,7 @@ chai.use(chaiHttp);
 const { expect } = chai;
 
 describe('Testa fluxo 4', () => {
-  it('testa se a rota /home retorna todos os times de casa', async () => {
+  it('testa se a rota /home retorna todos os times de casa ', async () => {
 
     const registrosMockadosCertinho = Matches.bulkBuild(leaderAllMock)
 
